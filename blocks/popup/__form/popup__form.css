@@ -1,0 +1,53 @@
+.popup__form{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 13px;
+    margin-bottom: 30px;
+    max-width: 358px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.popup__form::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+    opacity: 0.5;
+  }
+
+  .popup__form::-webkit-input-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+  }
+  
+  .popup__form::-moz-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+    opacity: 0.5;
+  }
+  
+  .popup__form::-ms-input-placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+  }
+
+  @media (max-width: 534px) {
+    .popup__form{
+      max-width: 238px;
+  }
+ } 
