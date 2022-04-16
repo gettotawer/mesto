@@ -18,54 +18,54 @@
             <div class="profile__container">
                 <img src="./images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
                 <div class="profile__info">
-                        <p class="profile__name">Жак-Ив Кусто</p>
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <p class="profile__description">Исследователь океана</p>
-                        <button class="profile__edit-button"></button>
+                        <button type="button" class="profile__edit-button"></button>
                 </div>
             </div>
-                <button class="profile__add-button"></button>
+                <button type="button" class="profile__add-button"></button>
         </section>
         <section class="elements">
             <div class="element">
                 <img src="./images/karachevsk.jpg" alt="Карачаевск" class="element__image">
                 <div class="element__section">
                     <h3 class="element__title">Карачаевск</h3>
-                    <button class="element__like"></button>
+                    <button type="button" class="element__like"></button>
                 </div>
             </div>
             <div class="element">
                 <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__image">
                 <div class="element__section">
                     <h3 class="element__title">Гора Эльбрус</h3>
-                    <button class="element__like"></button>
+                    <button type="button" class="element__like"></button>
                 </div>
             </div>
             <div class="element">
                 <img src="./images/dombay.jpg" alt="Домбай" class="element__image">
                 <div class="element__section">
                     <h3 class="element__title">Домбай</h3>
-                    <button class="element__like"></button>
+                    <button type="button" class="element__like"></button>
                 </div>
             </div>
             <div class="element">
                 <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__image">
                 <div class="element__section">
                     <h3 class="element__title">Гора Эльбрус</h3>
-                    <button class="element__like"></button>
+                    <button type="button" class="element__like"></button>
                 </div>
             </div>
             <div class="element">
                 <img src="./images/dombay.jpg" alt="Домбай" class="element__image">
                 <div class="element__section">
                     <h3 class="element__title">Домбай</h3>
-                    <button class="element__like"></button>
+                    <button type="button" class="element__like"></button>
                 </div>
             </div>
             <div class="element">
                 <img src="./images/karachevsk.jpg" alt="Карачаевск" class="element__image">
                 <div class="element__section">
                     <h3 class="element__title">Карачаево-Черкесия</h3>
-                    <button class="element__like"></button>
+                    <button type="button" class="element__like"></button>
                 </div>
             </div>
         </section>
@@ -75,11 +75,13 @@
     </footer>
     <div class="popup">
         <div class="popup__content">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__form popup__form_el_name" placeholder="Как Вас зовут?">
-            <input type="text" class="popup__form popup__form_el_description" placeholder="Расскажите о себе">
-            <button class="popup__submit-button">Сохранить</button>
-            <button class="popup__close-button"></button>
+            <form>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input type="text" class="popup__form popup__form_el_name" placeholder="Как Вас зовут?">
+                <input type="text" class="popup__form popup__form_el_description" placeholder="Расскажите о себе">
+                <button type="submit" class="popup__submit-button">Сохранить</button>
+                <button type="button" class="popup__close-button"></button>
+            </form>
         </div>
     </div>
     <script src="./scripts/script.js"></script>

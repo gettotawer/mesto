@@ -1,12 +1,12 @@
 .popup__submit-button{
-    position:absolute;
-    bottom: 37px;
-    left: 36px;
-    width: 358px;
+    border: none;
+    margin-bottom: 37px;
+    width: 100%;
+    max-width: 358px;
     height: 50px;
     background: #000000;
     border-radius: 2px;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -24,9 +24,9 @@
     .popup__submit-button{
         font-size: 14px;
         line-height: 17px;
-        width: 238px;
+        width: 100%;
+        max-width: 238px;
         height: 46px;
-        left: 22px;
-        bottom: 25px;
+        margin-bottom: 25px;
     }
  }

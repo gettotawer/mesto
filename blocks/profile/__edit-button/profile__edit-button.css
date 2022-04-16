@@ -16,6 +16,8 @@
         background-image: url(../../../images/Edit\ Button\ s\ size.svg);
         width: 18px;
         height: 18px;
+        background-repeat: no-repeat;
+        background-size: cover;
         top: 30px;
         right: -28;
     }

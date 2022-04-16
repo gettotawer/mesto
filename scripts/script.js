@@ -8,11 +8,8 @@ const popupDescription = document.querySelector('.popup__form_el_description');
 const popupSubmitBtn = document.querySelector('.popup__submit-button');
 
 
-popupName.value = profileName.textContent;
-popupDescription.value = profileDescription.textContent;
-
-
-function changeName (){
+function changeName (evt){
+    evt.preventDefault();
     profileName.textContent = popupName.value;
     profileDescription.textContent = popupDescription.value;
     popupToggle()
@@ -29,7 +26,11 @@ function popupOverlayClick(evt) {
 }
 
 
-editBtn.addEventListener('click', popupToggle);
+editBtn.addEventListener('click', ()=>{
+    popupName.value = profileName.textContent;
+    popupDescription.value = profileDescription.textContent;
+    popupToggle();
+});
 popupCloseBtn.addEventListener('click', popupToggle);
 popup.addEventListener('click', popupOverlayClick)
 popupSubmitBtn.addEventListener('click', changeName)

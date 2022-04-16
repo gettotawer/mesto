@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 0;
-    margin-left: 21px;
+    padding-left: 21px;
     max-width: 246px;
     padding-top: 25px;
 }
