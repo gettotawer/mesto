@@ -3,6 +3,7 @@
     border: none;
     box-shadow: none;
     background-image: url(../../../../images/like\ active.svg);
+    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     max-width: 22px;
