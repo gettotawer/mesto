@@ -1,0 +1,41 @@
+.popup-card__close-button{
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    background-image: url(../../../images/Close\ Icon.svg);
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 100%;
+    max-width: 32px;
+    max-height: 32px;
+    height: 100%;
+    cursor: pointer;
+}
+    
+@media (max-width: 534px) {
+ .popup-card__close-button{
+    background-image: url(../../../images/Close\ Icon\ s\ size.svg);
+    max-width: 20px;
+    max-height: 20px;
+    top: -36px;
+    right: 0px;
+    }
+} 
+    
+.popup-card__close-button:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: black;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+    
+.popup-card__close-button:hover::before{
+    opacity: 0.6;
+}
