@@ -102,6 +102,7 @@ function generateElementCard(cardsData){
         popupCard.classList.toggle('popup-card_opened');
         popupSubtitle.textContent = evt.target.getAttribute('Alt');
         popupImage.setAttribute('src', evt.target.getAttribute('src'));
+        popupImage.setAttribute('alt', evt.target.getAttribute('alt'));
         console.log(evt.target.getAttribute('src'));
     }
 
