@@ -177,9 +177,3 @@ popupElementCloseBtn.addEventListener('click', (evt) => {
 elementForm.addEventListener('submit', function(event){
     handleSubmitAddElementForm(event);
 });
-// popupElementSubmitButton.addEventListener('click', handleSubmitAddElementForm)
-
-
-
-
-//elementForm
