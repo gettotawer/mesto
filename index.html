@@ -11,7 +11,6 @@
 <body class="root">
     <header class="header">
         <img src="./images/logo.png" alt="Логотип проекта 'Место'" class="header__logo">
-        <div class="header__line"></div>
     </header>
     <main>
         <section class="profile">
@@ -33,27 +32,27 @@
     </footer>
     <div class="popup popup-profile">
         <div class="popup__content popup-profile__content">
-            <form>
+            <form class="popup-profile__form">
                 <h2 class="popup__title popup-profile__title">Редактировать профиль</h2>
                 <input name="name" type="text" class="popup__form popup-profile__form popup-profile__form_el_name" placeholder="Как Вас зовут?">
                 <input name="description" type="text" class="popup__form popup-profile__form popup-profile__form_el_description" placeholder="Расскажите о себе">
-                <button name="submitButton" type="submit" class="popup__submit-button popup-profile__submit-button">Сохранить</button>
-                <button name="closeButton" type="button" class="popup__close-button popup-profile__close-button"></button>
+                <button name="submitButton" type="submit" class="popup__submit-button popup-profile__submit-button">Сохранить</button>    
             </form>
+            <button name="closeButton" type="button" class="popup__close-button popup-profile__close-button"></button>
         </div>
     </div>
     <div class="popup popup-element">
         <div class="popup__content popup-element__content">
-            <form>
+            <form class="popup-element__form">
                 <h2 class="popup__title popup-element__title">Новое место</h2>
                 <input name="name" type="text" class="popup__form popup-element__form popup-element__form_el_name" placeholder="Название">
                 <input name="description" type="text" class="popup__form popup-element__form popup-element__form_el_link" placeholder="Ссылка на картинку">
-                <button name="submitButton" type="submit" class="popup__submit-button popup-element__submit-button">Создать</button>
-                <button name="closeButton" type="button" class="popup__close-button popup-element__close-button"></button>
+                <button name="submitButton" type="submit" class="popup__submit-button popup-element__submit-button">Создать</button>  
             </form>
+            <button name="closeButton" type="button" class="popup__close-button popup-element__close-button"></button>
         </div>
     </div>
-    <div class="popup-card">
+    <div class="popup popup-card">
         <div class="popup-card__group ">
             <img src="#" alt="" class="popup-card__image">
             <h3 class="popup-card__subtitle"></h3>

@@ -6,7 +6,12 @@
     background-repeat: no-repeat;
     width: 100%;
     max-width: 22px;
-    max-height: 19px;
+    height: 19px;
     margin-top: 5px;
     cursor: pointer;
+}
+
+
+.element__like_active:hover{
+    background-image: url(../../../../images/like\ active\ hover.svg); 
 }

@@ -12,6 +12,7 @@
     max-height: 32px;
     height: 100%;
     cursor: pointer;
+    transition: background-image 0.2s;
 }
 
 @media (max-width: 534px) {
@@ -22,20 +23,12 @@
         top: -36px;
         right: 0px;
     }
+
+    .popup__close-button:hover{
+        background-image: url(../../../images/close\ icon\ s\ hover.svg);
+    }
  } 
 
- .popup__close-button:before{
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: black;
-    opacity: 0;
-    transition: opacity 0.2s;
-}
-
-.popup__close-button:hover::before{
-    opacity: 0.6;
+.popup__close-button:hover{
+    background-image: url(../../../images/close\ icon\ hover.svg);
 }
