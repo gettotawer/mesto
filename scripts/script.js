@@ -82,13 +82,8 @@ function closePopupOverlay(evt) {
 //Закрытие попапа, если была нажата кнопка esc
 function closePopupEsc(evt){
     if(evt.key === 'Escape'){
-        if(popupProfile.classList.contains('popup_opened')){
-            closePopup(popupProfile);
-        } else if(popupCard.classList.contains('popup_opened')){
-            closePopup(popupCard);
-        } else {
-            closePopup(popupElement);
-        }
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
     }
 }
 
