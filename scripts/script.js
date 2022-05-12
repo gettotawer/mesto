@@ -62,18 +62,33 @@ function profileChangeSubmit (evt){
 function openPopup (popup) {
     popup.classList.add('popup_opened');
     popup.addEventListener('click', closePopupOverlay)
+    document.addEventListener('keydown', closePopupEsc)
  }
 
  //Скрывает попап редактирвоания профиля / добавления карточки
  function closePopup (popup) {
     popup.classList.remove('popup_opened');
     popup.removeEventListener('click', closePopupOverlay)
+    document.removeEventListener('keydown', closePopupEsc)
  }
 
 // Закрывает попап, если был сделан клин вне окна редактирования профиля
 function closePopupOverlay(evt) {
     if (evt.target === evt.currentTarget){
         closePopup(evt.target);
+    }
+}
+
+//Закрытие попапа, если была нажата кнопка esc
+function closePopupEsc(evt){
+    if(evt.key === 'Escape'){
+        if(popupProfile.classList.contains('popup_opened')){
+            closePopup(popupProfile);
+        } else if(popupCard.classList.contains('popup_opened')){
+            closePopup(popupCard);
+        } else {
+            closePopup(popupElement);
+        }
     }
 }
 
@@ -146,12 +161,11 @@ function handleLikeCard(event){
     event.target.classList.toggle('element__like_active')
 }
 
+popupName.value = profileName.textContent;
+popupDescription.value = profileDescription.textContent;
 
 // Вызов попапа редактирвоание профиля
 profileEditBtn.addEventListener('click', ()=>{
-    
-    popupName.value = profileName.textContent;
-    popupDescription.value = profileDescription.textContent;
     openPopup(popupProfile);
 });
 // Закрытие попапа редактирования профиля

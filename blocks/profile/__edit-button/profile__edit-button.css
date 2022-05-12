@@ -39,3 +39,7 @@
  .profile__edit-button:hover::before{
     opacity: 0.6;
 }
+
+.profile__edit-button:focus-visible{
+    outline: 0px;
+}

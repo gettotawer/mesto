@@ -55,4 +55,8 @@
     .popup__form{
       max-width: 238px;
   }
- } 
+ }
+
+ .popup__input-container_invalid .popup__form {
+  border-bottom: 1px solid #FF0000;
+}

@@ -32,22 +32,34 @@
     </footer>
     <div class="popup popup-profile">
         <div class="popup__content popup-profile__content">
-            <form class="popup-profile__form">
+            <form id="popup-profile__form" class="popup-sbmt__form popup-profile__form" novalidate>
                 <h2 class="popup__title popup-profile__title">Редактировать профиль</h2>
-                <input name="name" type="text" class="popup__form popup-profile__form popup-profile__form_el_name" placeholder="Как Вас зовут?">
-                <input name="description" type="text" class="popup__form popup-profile__form popup-profile__form_el_description" placeholder="Расскажите о себе">
-                <button name="submitButton" type="submit" class="popup__submit-button popup-profile__submit-button">Сохранить</button>    
+                <div class="popup__input-container">
+                    <input id="profile-name" name="name" type="text" class="popup__form popup-profile__form popup-profile__form_el_name" placeholder="Как Вас зовут?" minlength="2" maxlength="40" required>
+                    <span id="profile-name-error" class="popup__error"></span>
+                </div>
+                <div class="popup__input-container">
+                    <input id="description" name="description" type="text" class="popup__form popup__form_lower popup-profile__form popup-profile__form_el_description" placeholder="Расскажите о себе" minlength="2" maxlength="200" required>
+                    <span id="description-error" class="popup__error"></span>
+                </div>
+                <button id="popup-profile__form-button" name="submitButton" type="submit" class="popup__submit-button popup-profile__submit-button">Сохранить</button>    
             </form>
             <button name="closeButton" type="button" class="popup__close-button popup-profile__close-button"></button>
         </div>
     </div>
     <div class="popup popup-element">
         <div class="popup__content popup-element__content">
-            <form class="popup-element__form">
+            <form id="popup-element__form" class="popup-sbmt__form popup-element__form" novalidate>
                 <h2 class="popup__title popup-element__title">Новое место</h2>
-                <input name="name" type="text" class="popup__form popup-element__form popup-element__form_el_name" placeholder="Название">
-                <input name="description" type="text" class="popup__form popup-element__form popup-element__form_el_link" placeholder="Ссылка на картинку">
-                <button name="submitButton" type="submit" class="popup__submit-button popup-element__submit-button">Создать</button>  
+                <div class="popup__input-container">
+                    <input id="el-name" name="name" type="text" class="popup__form popup-element__form popup-element__form_el_name" placeholder="Название" minlength="2" maxlength="30" required>
+                    <span id="el-name-error" class="popup__error"></span>
+                </div>
+                <div class="popup__input-container">
+                    <input id="url" name="description" type="url" class="popup__form popup__form_lower popup-element__form popup-element__form_el_link" placeholder="Ссылка на картинку" required>
+                    <span id="url-error" class="popup__error"></span>
+                </div>
+                <button id="popup-element__form-button" name="submitButton" type="submit" class="popup__submit-button popup-element__submit-button">Создать</button>  
             </form>
             <button name="closeButton" type="button" class="popup__close-button popup-element__close-button"></button>
         </div>
@@ -70,5 +82,6 @@
         </div>
     </template>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validation.js"></script>
 </body>
 </html>
