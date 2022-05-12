@@ -76,7 +76,7 @@ function deactivateError(inputElement, button, inputList, inactiveButtonClass, i
 }
 
 enableValidation({
-    formSelector: '.popup-sbmt__form',
+    formSelector: '.popup__submit-form',
     inputSelector: '.popup__form',
     submitButtonSelector: '.popup__submit-button',
     inactiveButtonClass: 'popup__submit-button_inactive',
