@@ -1,5 +1,4 @@
 .popup__error {
-    color: red;
     visibility: hidden;
     position: absolute;
     top: 32px;
