@@ -15,6 +15,10 @@
     transition: background-image 0.2s;
 }
 
+.popup__close-button:hover{
+    background-image: url(../../../images/close\ icon\ hover.svg);
+}
+
 @media (max-width: 534px) {
     .popup__close-button{
         background-image: url(../../../images/Close\ Icon\ s\ size.svg);
@@ -29,6 +33,3 @@
     }
  } 
 
-.popup__close-button:hover{
-    background-image: url(../../../images/close\ icon\ hover.svg);
-}
