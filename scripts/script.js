@@ -68,7 +68,7 @@ function handleCardClick(name, link){
     this._popupCardSubtitle.textContent = name;
     this._popupCardImage.setAttribute('src', link);
     this._popupCardImage.setAttribute('alt', name);
-    openPopup (document.querySelector('.popup-card'))
+    openPopup (popupCard);
 }
 
 //Добавление новой карточки
