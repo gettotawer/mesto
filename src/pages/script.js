@@ -26,7 +26,7 @@ const selectorsObject = {
 
   function createCard(cardItem, cardTemplateSelector, handleCardClick){
     const card = new Card(cardItem, cardTemplateSelector, handleCardClick);
-    return card
+    return card.generateCard()
   }
 
 //Создаем необходимые классы
@@ -35,8 +35,7 @@ const userInfo = new UserInfo (profileNameSelector, profileDescriptionSelector);
 const cardList = new Section({ items: initialCards,
     render: (cardItem) => {
         const card = createCard(cardItem, cardTemplateSelector, handleCardClick)
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement)
+        cardList.addItem(card)
     }}, containerSelector)
     
     //Создаем экземпляр редактирования профиля   
@@ -56,8 +55,7 @@ const cardList = new Section({ items: initialCards,
             }
 
             const card = createCard(cardData, cardTemplateSelector, handleCardClick)
-            const cardElement = card.generateCard();
-            cardList.addItem(cardElement)
+            cardList.addItem(card)
 
         elementPopup.close();
     }}, elementPopupSelector);
