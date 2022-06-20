@@ -5,17 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Проектная работа Максима Кочурова на Яндекс Практикуме">
         <meta name="author" content="Кочуров Максим">
-        <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+         <link rel="stylesheet" href="./pages/index.css">
         <title>Mesto Russia</title>
     </head>
 <body class="root">
     <header class="header">
-        <img src="<%=require('./images/logo.png')%>" alt="Логотип проекта 'Место'" class="header__logo">
+        <!-- <img src="<%=require('./images/logo.png')%>" alt="Логотип проекта 'Место'" class="header__logo"> -->
+        <img src="./images/logo.png" alt="Логотип проекта 'Место'" class="header__logo">
     </header>
     <main>
         <section class="profile">
             <div class="profile__container">
-                <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar">
+                <!-- <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar"> -->
+                <img src="./images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
                 <div class="profile__info">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <p class="profile__description">Исследователь океана</p>
@@ -35,11 +37,11 @@
             <form id="popup-profile__form" class="popup__submit-form popup-profile__form" novalidate>
                 <h2 class="popup__title popup-profile__title">Редактировать профиль</h2>
                 <div class="popup__input-container">
-                    <input id="profile-name" name="name" type="text" class="popup__form popup-profile__form popup-profile__form_el_name" placeholder="Как Вас зовут?" minlength="2" maxlength="40" required>
+                    <input id="profile-name" name="profileName" type="text" class="popup__form popup__input popup-profile__form popup-profile__form_el_name" placeholder="Как Вас зовут?" minlength="2" maxlength="40" required>
                     <span id="profile-name-error" class="popup__error"></span>
                 </div>
                 <div class="popup__input-container">
-                    <input id="description" name="description" type="text" class="popup__form popup__form_lower popup-profile__form popup-profile__form_el_description" placeholder="Расскажите о себе" minlength="2" maxlength="200" required>
+                    <input id="description" name="profileDescription" type="text" class="popup__form popup__input popup__form_lower popup-profile__form popup-profile__form_el_description" placeholder="Расскажите о себе" minlength="2" maxlength="200" required>
                     <span id="description-error" class="popup__error"></span>
                 </div>
                 <button id="popup-profile__form-button" name="submitButton" type="submit" class="popup__submit-button popup-profile__submit-button">Сохранить</button>    
@@ -52,11 +54,11 @@
             <form id="popup-element__form" class="popup__submit-form popup-element__form" novalidate>
                 <h2 class="popup__title popup-element__title">Новое место</h2>
                 <div class="popup__input-container">
-                    <input id="el-name" name="name" type="text" class="popup__form popup-element__form popup-element__form_el_name" placeholder="Название" minlength="2" maxlength="30" required>
+                    <input id="el-name" name="cardName" type="text" class="popup__form popup__input popup-element__form popup-element__form_el_name" placeholder="Название" minlength="2" maxlength="30" required>
                     <span id="el-name-error" class="popup__error"></span>
                 </div>
                 <div class="popup__input-container">
-                    <input id="url" name="description" type="url" class="popup__form popup__form_lower popup-element__form popup-element__form_el_link" placeholder="Ссылка на картинку" required>
+                    <input id="url" name="cardDescription" type="url" class="popup__form popup__form_lower popup__input popup-element__form popup-element__form_el_link" placeholder="Ссылка на картинку" required>
                     <span id="url-error" class="popup__error"></span>
                 </div>
                 <button id="popup-element__form-button" name="submitButton" type="submit" class="popup__submit-button popup-element__submit-button">Создать</button>  
@@ -81,7 +83,7 @@
             <button name="deleteButton" type="button" class="element__delete-button"></button>
         </div>
     </template>
-    <!-- <script type="module" src="./scripts/script.js"></script>
-    <script type="module" src="./scripts/initialCards.js"></script> -->
+    <script type="module" src="./pages/script.js"></script>
+    <!-- <script type="module" src="./components/initialCards.js"></script> -->
 </body>
 </html>

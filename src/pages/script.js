@@ -1,13 +1,13 @@
-import '../pages/index.css';
+// import '../pages/index.css';
 
 //Импортируем классы
-import { initialCards } from "./initialCards.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { Section } from "./Section.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
+import { initialCards } from "../utils/initialCards.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 
 //Селекторы
 const cardTemplateSelector = '#template-element';
@@ -24,40 +24,41 @@ const selectorsObject = {
     inputErrorClass: 'popup__input-container_invalid',
   }
 
+  function createCard(cardItem, cardTemplateSelector, handleCardClick){
+    const card = new Card(cardItem, cardTemplateSelector, handleCardClick);
+    return card
+  }
+
 //Создаем необходимые классы
 const userInfo = new UserInfo (profileNameSelector, profileDescriptionSelector);
 //Создаем экземпляр класса вставки в разметку
 const cardList = new Section({ items: initialCards,
     render: (cardItem) => {
-        const card = new Card(cardItem, cardTemplateSelector, handleCardClick)
+        const card = createCard(cardItem, cardTemplateSelector, handleCardClick)
         const cardElement = card.generateCard();
         cardList.addItem(cardElement)
     }}, containerSelector)
     
     //Создаем экземпляр редактирования профиля   
-    const popupProfile = new PopupWithForm({submit: (evt) => {
+    const popupProfile = new PopupWithForm({submit: (evt, formValues) => {
         evt.preventDefault();
-        const values = popupProfile._getInputValues();
-        userInfo.setUserInfo(values.nameValue, values.descriptionValue);
+        userInfo.setUserInfo(formValues.profileName, formValues.profileDescription);
         popupProfile.close();
     }}, popupProfileSelector);
     popupProfile.setEventListeners();
     
     //Создаем экземпляр добавления карточки
-    const elementPopup = new PopupWithForm ({submit: (evt) => {
+    const elementPopup = new PopupWithForm ({submit: (evt, formValues) => {
         evt.preventDefault();
-        elementPopup._getInputValues();
             const cardData = {
-                name: `${elementPopup._getInputValues().nameValue}`,
-                link: `${elementPopup._getInputValues().descriptionValue}`,
+                name: `${formValues.cardName}`,
+                link: `${formValues.cardDescription}`,
             }
 
-            const card = new Card(cardData, cardTemplateSelector, handleCardClick)
+            const card = createCard(cardData, cardTemplateSelector, handleCardClick)
             const cardElement = card.generateCard();
             cardList.addItem(cardElement)
 
-            elementPopup.popupElementName.value = '';
-            elementPopup.popupElementLink.value = '';
         elementPopup.close();
     }}, elementPopupSelector);
     elementPopup.setEventListeners();
@@ -69,16 +70,16 @@ const cardList = new Section({ items: initialCards,
 // ДОМ элементы
 const profileEditBtn = document.querySelector('.profile__edit-button'); // Кнопка редактирования профиля
 const profileAddButton = document.querySelector('.profile__add-button'); //Кнопка добавления карточки
-const formList = Array.from(document.querySelectorAll('.popup__submit-form')); //Массив форм
-
-//Упрощаем валидацию. В первый раз задаем значения профиля до открытия попапа
-popupProfile.popupName.value = userInfo.getUserInfo().name;
-popupProfile.popupDescription.value = userInfo.getUserInfo().description;
+// const formList = Array.from(document.querySelectorAll('.popup__submit-form')); //Массив форм
+const popupProfileFormElement = document.querySelector('.popup-profile__form');
+const popupElementFormElement = document.querySelector('.popup-element__form');
 
 // Вызов попапа редактирвоание профиля
 profileEditBtn.addEventListener('click', ()=>{
-    popupProfile.popupName.value = userInfo.getUserInfo().name;
-    popupProfile.popupDescription.value = userInfo.getUserInfo().description;
+    const userInfoObj = userInfo.getUserInfo()
+    popupProfile.popupInputs[0].value = userInfoObj.name;
+    popupProfile.popupInputs[1].value = userInfoObj.description;
+    profileValidation.enableValidation();
     popupProfile.open();
 
 });
@@ -86,6 +87,7 @@ profileEditBtn.addEventListener('click', ()=>{
 //Вызов попапа редактирования карточки
 profileAddButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    newCardValidation.enableValidation();
     elementPopup.open()
 });
 
@@ -94,9 +96,8 @@ function handleCardClick(name, link){
 }
 
 //Включаем валидацию для каждой формы
-formList.forEach((formItem)=>{
-    const formValidator = new FormValidator (selectorsObject, formItem);
-    formValidator.enableValidation();
-})
+
+const profileValidation = new FormValidator (selectorsObject, popupProfileFormElement);
+const newCardValidation = new FormValidator (selectorsObject, popupElementFormElement);
 
 cardList.renderItems();

@@ -36,8 +36,6 @@ export class Card{
     }
 
     _setEventListeners(){
-        this._elementImage.setAttribute('src', this._link);
-        this._elementImage.setAttribute('alt', this._name);
         this._elementLike.addEventListener('click', this._handleLikeCard);
         this._elementDeleteButton.addEventListener('click', this._handleDeleteCard);
         this._elementImage.addEventListener('click', ()=>{
