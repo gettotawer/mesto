@@ -41,7 +41,6 @@ export class Card{
         this._elementImage.addEventListener('click', ()=>{
             this._handleCardClick(this._name, this._link);
         });
-        this._elementTitle.textContent = this._name;
     }
 
 }
