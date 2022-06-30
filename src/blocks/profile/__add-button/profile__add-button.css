@@ -11,7 +11,7 @@
     position: relative;
 }
 
-@media (max-width: 674px) {
+@media (max-width: 708px) {
     .profile__add-button{
         background-image: url(../../../images/Add_Button_L_size.svg);
         width: 282px;

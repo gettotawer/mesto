@@ -1,8 +1,8 @@
 .element{
+    box-sizing: border-box;
     background: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
-    padding-bottom: 21px;
     width: 100%;
     max-width: 282px;
     max-height: 361px;

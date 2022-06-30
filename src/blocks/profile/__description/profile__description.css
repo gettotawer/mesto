@@ -12,13 +12,13 @@
     white-space: nowrap;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 760px) {
     .profile__description{
         max-width: 300px;
     }
  }
 
-@media (max-width: 674px) {
+@media (max-width: 708px) {
     .profile__description{
         text-align: center;
     }

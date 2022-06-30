@@ -5,8 +5,10 @@ export class PopupWithForm extends Popup{
         super(popupSelector)
 
         this._submit = submit;
-        this._popupForm = this._popup.querySelector('.popup__submit-form')
+        this._popupForm = this._popup.querySelector('.popup__submit-form');
         this.popupInputs = this._popupForm.querySelectorAll('.popup__input');
+        this._popupButton = this._popupForm.querySelector('.popup__submit-button');
+        this._popupButtonText = this._popupButton.textContent;
     }
 
     _getInputValues(){
@@ -26,6 +28,14 @@ export class PopupWithForm extends Popup{
             evt.preventDefault();
             this._submit(this._getInputValues());
         })
+    }
+    
+    waiting(isWaiting){
+        if(isWaiting){
+            this._popupButton.textContent = 'Сохранение...';
+        } else{
+            this._popupButton.textContent = this._popupButtonText
+        }
     }
 
     close(){

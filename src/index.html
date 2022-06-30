@@ -5,22 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Проектная работа Максима Кочурова на Яндекс Практикуме">
         <meta name="author" content="Кочуров Максим">
-         <link rel="stylesheet" href="./pages/index.css">
+        <!-- <link rel="stylesheet" href="./pages/index.css"> -->
         <title>Mesto Russia</title>
     </head>
 <body class="root">
     <header class="header">
-        <!-- <img src="<%=require('./images/logo.png')%>" alt="Логотип проекта 'Место'" class="header__logo"> -->
-        <img src="./images/logo.png" alt="Логотип проекта 'Место'" class="header__logo">
+        <img src="<%=require('./images/logo.png')%>" alt="Логотип проекта 'Место'" class="header__logo">
+        <!-- <img src="./images/logo.png" alt="Логотип проекта 'Место'" class="header__logo"> -->
     </header>
     <main>
         <section class="profile">
             <div class="profile__container">
-                <!-- <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar"> -->
-                <img src="./images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
+                <div  alt="Аватар профиля" class="profile__avatar"></div>
                 <div class="profile__info">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <p class="profile__description">Исследователь океана</p>
+                        <h1 class="profile__name"></h1>
+                        <p class="profile__description"></p>
                         <button type="button" class="profile__edit-button"></button>
                 </div>
             </div>
@@ -73,17 +72,41 @@
             <button name="closeButton" type="button" class="popup__close-button "></button>
         </div>
     </div>
+    <div class="popup popup-avatar">
+        <div class="popup__content popup-avatar__content">
+            <form id="popup-element__form" class="popup__submit-form popup-avatar__form" novalidate>
+                <h2 class="popup__title popup-element__title">Обновить аватар</h2>
+                <div class="popup__input-container">
+                    <input id="url" name="cardDescription" type="url" class="popup__form popup__input popup-avatar__form popup-avatar__form_el_link" placeholder="Ссылка на картинку" required>
+                    <span id="url-error" class="popup__error"></span>
+                </div>
+                <button id="popup-element__form-button" name="submitButton" type="submit" class="popup__submit-button popup-element__submit-button">Сохранить</button>  
+            </form>
+            <button name="closeButton" type="button" class="popup__close-button"></button>
+        </div>
+    </div>
+    <div class="popup popup-delete-card">
+        <div class="popup__content popup-delete-card__content">
+            <form id="popup-element__form" class="popup__submit-form popup-element__form" novalidate>
+                <h2 class="popup__title popup-profile__title popup-delete-card__title">Вы уверены?</h2>
+                <button id="popup-delete-card__form-button" name="submitButton" type="submit" class="popup__submit-button popup-delete-card__submit-button">Да</button>  
+            </form>
+            <button name="closeButton" type="button" class="popup__close-button"></button>
+        </div>
+    </div>
     <template id="template-element">
         <div class="element">
             <img src="#" alt="" class="element__image">
             <div class="element__section">
                 <h3 class="element__title"></h3>
-                <button type="button" class="element__like"></button>
+                <div class="element__like-container">
+                    <button type="button" class="element__like-button"></button>
+                    <p class="element__like-ammount"></p>
+                </div>
             </div>
             <button name="deleteButton" type="button" class="element__delete-button"></button>
         </div>
     </template>
-    <script type="module" src="./pages/script.js"></script>
-    <!-- <script type="module" src="./components/initialCards.js"></script> -->
+    <!-- <script type="module" src="./pages/script.js"></script> -->
 </body>
 </html>
