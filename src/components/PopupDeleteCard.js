@@ -11,7 +11,6 @@ export class popupDeleteCard extends Popup{
     open(evt, cardId){
         this._evt = evt;
         this._cardId = cardId;
-        console.log(this._cardId);
         super.open()
     }
 
@@ -28,8 +27,8 @@ export class popupDeleteCard extends Popup{
         super.setEventListeners();
         this._popup.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._evt.target.closest('.element').remove()
-            this._submit(this._cardId);
+            //this._evt.target.closest('.element').remove()
+            this._submit(this._cardId, this._evt);
         })
     }
 }

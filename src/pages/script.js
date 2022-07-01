@@ -69,10 +69,6 @@ popupProfile.setEventListeners();
 
     //Создаем экземпляр добавления карточки
 const elementPopup = new PopupWithForm ({submit: (formValues) => {
-    // const cardData = {
-    //     name: `${formValues.cardName}`,
-    //     link: `${formValues.cardDescription}`,
-    // }
     elementPopup.waiting(true)
     api.addCard(formValues.cardName, formValues.cardDescription).then((data)=>{
         const card = createCard(data, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick, myId);
@@ -88,9 +84,10 @@ elementPopup.setEventListeners();
 
 
 
-const deleteCardPopup = new popupDeleteCard({deleteCard: (cardId) => {
+const deleteCardPopup = new popupDeleteCard({deleteCard: (cardId, card) => {
     deleteCardPopup.waiting(true)
     api.deleteCard(cardId).then(() => {
+        card.target.closest('.element').remove()
         deleteCardPopup.close();
     }).finally(()=>{
         deleteCardPopup.waiting(false)
@@ -150,7 +147,6 @@ const api = new Api({
 
 
 Promise.all([api.getUserInfo(),api.getCardsArray()]).then(([userData, cards]) => {
-    console.log(userData, cards);
     userInfo.setUserInfo(userData.name, userData.about);
     userInfo.setUserAvatar(userData.avatar);
     myId = userData._id;
@@ -158,29 +154,6 @@ Promise.all([api.getUserInfo(),api.getCardsArray()]).then(([userData, cards]) =>
 }).catch((err)=>{
     console.log(err)
 });
-
-
-
-
-// Функция изменения данных профиля
-// function changeProfileInfo(){
-//     api.getUserInfo().then((data)=>{
-//         userInfo.setUserInfo(data.name, data.about, data.avatar);
-//     }).catch((err)=>{
-//         console.log(err)
-//     });
-// }
-//Вызываем функцию
-// changeProfileInfo()
-
-
-//получаем массив карточек с сервера и рендерим их
-// api.getCardsArray().then((data)=>{
-//     cardList.renderItems(data);
-// }).catch((err)=>{
-//     console.log(err)
-// });
-
 
 
 
