@@ -12,6 +12,10 @@ import { popupDeleteCard } from "../components/PopupDeleteCard.js";
 
 
 
+let myId;
+
+
+
 
 //Селекторы
 const cardTemplateSelector = '#template-element';
@@ -33,8 +37,8 @@ const selectorsObject = {
 
 
 
-function createCard(cardItem, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick){
-    const card = new Card(cardItem, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick);
+function createCard(cardItem, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick, myId){
+    const card = new Card(cardItem, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick, myId);
     return card.generateCard()
 }
 
@@ -50,10 +54,12 @@ const userInfo = new UserInfo (profileNameSelector, profileDescriptionSelector);
 const popupProfile = new PopupWithForm({submit: (formValues) => {
     popupProfile.waiting(true)
     api.editProfile(formValues.profileName,formValues.profileDescription).then((data)=>{
-            changeProfileInfo(data);
+            userInfo.setUserInfo(data.name, data.about);
+            popupProfile.close();
         }).finally(()=>{
             popupProfile.waiting(false)
-            popupProfile.close();
+        }).catch((err)=>{
+            console.log(err)
         })
 }}, popupProfileSelector);
 popupProfile.setEventListeners();
@@ -69,11 +75,13 @@ const elementPopup = new PopupWithForm ({submit: (formValues) => {
     // }
     elementPopup.waiting(true)
     api.addCard(formValues.cardName, formValues.cardDescription).then((data)=>{
-        const card = createCard(data, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick);
+        const card = createCard(data, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick, myId);
         cardList.addNewItem(card);
+        elementPopup.close();
     }).finally(()=>{
         elementPopup.waiting(false)
-        elementPopup.close();
+    }).catch((err)=>{
+        console.log(err)
     });
 }}, elementPopupSelector);
 elementPopup.setEventListeners();
@@ -81,7 +89,14 @@ elementPopup.setEventListeners();
 
 
 const deleteCardPopup = new popupDeleteCard({deleteCard: (cardId) => {
-    api.deleteCard(cardId);
+    deleteCardPopup.waiting(true)
+    api.deleteCard(cardId).then(() => {
+        deleteCardPopup.close();
+    }).finally(()=>{
+        deleteCardPopup.waiting(false)
+    }).catch((err)=>{
+        console.log(err)
+    });;
 }}, popupDeleteCardSelector)
 deleteCardPopup.setEventListeners()
 
@@ -100,10 +115,12 @@ popupImage.setEventListeners();
 const profileAvatarPopup = new PopupWithForm({submit: (formValues) => {
     profileAvatarPopup.waiting(true);
     api.setNewAvatar(formValues.cardDescription).then((data) => {
-        changeProfileInfo(data);
+        userInfo.setUserAvatar(data.avatar);
+        profileAvatarPopup.close();
     }).finally(()=>{
         profileAvatarPopup.waiting(false);
-        profileAvatarPopup.close();
+    }).catch((err)=>{
+        console.log(err)
     });
 }}, popupAvatarChangeSelector);
 profileAvatarPopup.setEventListeners();
@@ -114,7 +131,7 @@ profileAvatarPopup.setEventListeners();
 //Создаем экземпляр класса вставки в разметку
 const cardList = new Section({
     render: (cardItem) => {
-        const card = createCard(cardItem, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick)
+        const card = createCard(cardItem, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick, myId)
         cardList.addServerItem(card)
 }}, containerSelector)
 
@@ -132,20 +149,37 @@ const api = new Api({
 
 
 
+Promise.all([api.getUserInfo(),api.getCardsArray()]).then(([userData, cards]) => {
+    console.log(userData, cards);
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserAvatar(userData.avatar);
+    myId = userData._id;
+    cardList.renderItems(cards);
+}).catch((err)=>{
+    console.log(err)
+});
+
+
+
+
 // Функция изменения данных профиля
-function changeProfileInfo(){
-    api.getUserInfo().then((data)=>{
-        userInfo.setUserInfo(data.name, data.about, data.avatar);
-    });
-}
+// function changeProfileInfo(){
+//     api.getUserInfo().then((data)=>{
+//         userInfo.setUserInfo(data.name, data.about, data.avatar);
+//     }).catch((err)=>{
+//         console.log(err)
+//     });
+// }
 //Вызываем функцию
-changeProfileInfo()
+// changeProfileInfo()
 
 
 //получаем массив карточек с сервера и рендерим их
-api.getCardsArray().then((data)=>{
-    cardList.renderItems(data);
-});
+// api.getCardsArray().then((data)=>{
+//     cardList.renderItems(data);
+// }).catch((err)=>{
+//     console.log(err)
+// });
 
 
 

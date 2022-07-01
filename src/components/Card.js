@@ -1,5 +1,5 @@
 export class Card{
-    constructor(cardsData, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick){
+    constructor(cardsData, cardTemplateSelector, handleCardClick, handleDeleteCardClick, handleLikeClick, handleDislikeClick, myId){
         this._name = cardsData.name;
         this._link = cardsData.link;
         this._ownerId = cardsData.owner._id;
@@ -8,7 +8,7 @@ export class Card{
         this._cardTemplateSelector = cardTemplateSelector;
         this._handleCardClick = handleCardClick;
         this._handleDeleteCardClick = handleDeleteCardClick;
-        this._myId = '60b750b65d30829181392346';
+        this._myId = myId;
         this._handleLikeClick = handleLikeClick;
         this._handleDislikeClick = handleDislikeClick;
     }
@@ -18,12 +18,13 @@ export class Card{
         return cardElement
     }
 
-    // handleDeleteCard(event){
-    //     event.target.closest('.element').remove()
-    // }
 
-    _handleLikeCard(event){
-        event.target.classList.toggle('element__like-button_active')
+    _handleLikeCard(obj){
+        obj.classList.add('element__like-button_active');
+    }
+
+    _handleDislikeCard(obj){
+        obj.classList.remove('element__like-button_active');
     }
 
     generateCard(){
@@ -54,14 +55,19 @@ export class Card{
 
     _setEventListeners(){
         this._elementLikeButton.addEventListener('click', (evt)=>{
-            this._handleLikeCard(evt)
-            if(evt.target.classList.contains('element__like-button_active')){
+            if(!evt.target.classList.contains('element__like-button_active')){
                 this._handleLikeClick(this._cardId).then((data) => {
+                    this._handleLikeCard(this._elementLikeButton);
                     this._elementLikeAmmount.textContent = data.likes.length;
-                })
+                }).catch((err)=>{
+                    console.log(err)
+                });
             } else {
                 this._handleDislikeClick(this._cardId).then((data) => {
+                    this._handleDislikeCard(this._elementLikeButton);
                     this._elementLikeAmmount.textContent = data.likes.length;
+                }).catch((err)=>{
+                    console.log(err)
                 });
             }
         });
