@@ -8,8 +8,8 @@
 
 ## Стек технологий:
 - JavaScript,
-- CSS,
-- JSX.
+- CSS 3,
+- HTML 5.
 
 ## Ссылка на Github pages 
 https://gettotawer.github.io/mesto/
